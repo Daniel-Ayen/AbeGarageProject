@@ -1,0 +1,305 @@
+/* * ABE GARAGE PROJECT - GLOBAL STYLESHEET
+ * * This file contains base styles, typography, layout, and component styles 
+ * for a modern, professional automotive garage application interface.
+ */
+
+/* --- 1. BASE AND UTILITIES --- */
+:root {
+    --primary-color: #E63946; /* A vibrant red/crimson for accents (e.g., brand color) */
+    --secondary-color: #1D3557; /* A deep navy blue for primary text/backgrounds */
+    --accent-color: #457B9D; /* A cool blue for secondary buttons/links */
+    --background-light: #F1FAEE; /* Very light, off-white background */
+    --text-dark: #333333; /* Standard dark text */
+    --font-family-primary: 'Inter', sans-serif;
+    --border-radius: 8px;
+    --box-shadow-default: 0 4px 10px rgba(0, 0, 0, 0.08);
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: var(--font-family-primary);
+    background-color: var(--background-light);
+    color: var(--text-dark);
+    line-height: 1.6;
+}
+
+/* Base Link Styling */
+a {
+    color: var(--accent-color);
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+a:hover {
+    color: var(--primary-color);
+    text-decoration: underline;
+}
+
+/* --- 2. TYPOGRAPHY --- */
+h1, h2, h3, h4 {
+    color: var(--secondary-color);
+    margin-bottom: 0.5em;
+    font-weight: 700;
+}
+
+h1 { font-size: 2.5rem; }
+h2 { font-size: 2rem; }
+h3 { font-size: 1.75rem; }
+h4 { font-size: 1.5rem; }
+
+p {
+    margin-bottom: 1em;
+}
+
+/* --- 3. LAYOUT & CONTAINERS --- */
+.container {
+    width: 90%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 1rem 0;
+}
+
+.content-inner {
+    padding: 40px 20px;
+    min-height: 70vh; /* Ensures content fills the page visually */
+}
+
+/* Flex Grid System (for components like tables, cards, etc.) */
+.flex-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    margin-bottom: 20px;
+}
+
+.col-12 { width: 100%; }
+.col-md-6 { flex: 1 1 calc(50% - 20px); }
+.col-lg-4 { flex: 1 1 calc(33.333% - 20px); }
+
+/* --- 4. BUTTONS --- */
+.btn {
+    display: inline-block;
+    padding: 10px 20px;
+    border-radius: var(--border-radius);
+    font-weight: 600;
+    text-align: center;
+    cursor: pointer;
+    border: 2px solid transparent;
+    transition: all 0.3s ease;
+    margin-right: 10px;
+}
+
+.btn-primary {
+    background-color: var(--primary-color);
+    color: white;
+    border-color: var(--primary-color);
+}
+
+.btn-primary:hover {
+    background-color: #C9303D; /* Darker primary */
+    box-shadow: 0 4px 12px rgba(230, 57, 70, 0.4);
+}
+
+.btn-secondary {
+    background-color: var(--accent-color);
+    color: white;
+    border-color: var(--accent-color);
+}
+
+.btn-secondary:hover {
+    background-color: #3B6780; /* Darker accent */
+}
+
+.btn-outline {
+    background-color: transparent;
+    color: var(--secondary-color);
+    border-color: var(--secondary-color);
+}
+
+.btn-outline:hover {
+    background-color: var(--secondary-color);
+    color: white;
+}
+
+/* --- 5. FORMS & INPUTS --- */
+.form-group {
+    margin-bottom: 15px;
+}
+
+.form-control, 
+select, 
+textarea {
+    width: 100%;
+    padding: 12px 15px;
+    border: 1px solid #C0C0C0;
+    border-radius: var(--border-radius);
+    background-color: white;
+    font-size: 1rem;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.form-control:focus, 
+select:focus, 
+textarea:focus {
+    border-color: var(--accent-color);
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(69, 123, 157, 0.2);
+}
+
+label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: 500;
+    color: var(--secondary-color);
+}
+
+/* Card-based form wrapper */
+.form-card {
+    background-color: white;
+    padding: 30px;
+    border-radius: var(--border-radius);
+    box-shadow: var(--box-shadow-default);
+    max-width: 600px;
+    margin: 40px auto;
+}
+
+/* --- 6. COMPONENTS (Cards, Tables, Alerts) --- */
+
+/* Card Component */
+.card {
+    background-color: white;
+    padding: 20px;
+    border-radius: var(--border-radius);
+    box-shadow: var(--box-shadow-default);
+    transition: transform 0.3s ease;
+    width: 100%;
+}
+
+.card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.12);
+}
+
+/* Table Component (For lists of customers, orders, etc.) */
+.data-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+    background-color: white;
+    border-radius: var(--border-radius);
+    overflow: hidden; /* Ensures rounded corners apply to content */
+    box-shadow: var(--box-shadow-default);
+}
+
+.data-table th, .data-table td {
+    padding: 15px;
+    text-align: left;
+    border-bottom: 1px solid #E0E0E0;
+}
+
+.data-table th {
+    background-color: var(--secondary-color);
+    color: white;
+    font-weight: 600;
+    text-transform: uppercase;
+    font-size: 0.85rem;
+}
+
+.data-table tbody tr:hover {
+    background-color: var(--background-light);
+}
+
+/* Alert/Message Boxes */
+.alert {
+    padding: 15px 20px;
+    margin-bottom: 20px;
+    border-radius: var(--border-radius);
+    border: 1px solid transparent;
+    font-weight: 500;
+}
+
+.alert-success {
+    background-color: #D4EDDA;
+    color: #155724;
+    border-color: #C3E6CB;
+}
+
+.alert-error {
+    background-color: #F8D7DA;
+    color: #721C24;
+    border-color: #F5C6CB;
+}
+
+/* --- 7. NOT FOUND PAGE (Specific to the selected code) --- */
+.text-center {
+    text-align: center;
+}
+
+/* 404 specific styling */
+.container.content-inner.text-center {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: calc(100vh - 120px); /* Adjust based on header/footer size */
+    padding: 20px;
+}
+
+.container.content-inner.text-center h1 {
+    font-size: 5rem;
+    color: var(--primary-color);
+    margin-bottom: 10px;
+}
+
+.container.content-inner.text-center p {
+    font-size: 1.5rem;
+    color: var(--secondary-color);
+    margin-bottom: 30px;
+}
+
+/* --- 8. HEADER AND FOOTER (Placeholder structure) --- */
+
+.header, .footer {
+    background-color: var(--secondary-color);
+    color: white;
+    padding: 15px 0;
+    width: 100%;
+}
+
+.header a, .footer a {
+    color: white;
+}
+
+.header nav ul {
+    list-style: none;
+    display: flex;
+    justify-content: flex-end;
+}
+
+.header nav ul li {
+    margin-left: 20px;
+}
+
+/* Responsive adjustment for mobile */
+@media (max-width: 768px) {
+    .flex-row {
+        flex-direction: column;
+    }
+
+    .col-md-6, .col-lg-4 {
+        flex: 1 1 100%;
+    }
+    
+    .data-table th, .data-table td {
+        padding: 10px;
+    }
+
+    .container.content-inner.text-center h1 {
+        font-size: 3.5rem;
+    }
+}
