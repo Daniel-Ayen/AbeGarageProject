@@ -71,8 +71,8 @@ function Step1Customer({ nextStep, data }) {
             </label>
           </div>
         ))}
-      </div>
-      
+        
+      </div>  
       <p className="text-center mt-3">-- OR --</p>
       
       {!showAddForm && (

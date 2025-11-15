@@ -1,3 +1,5 @@
+
+
 import axios from 'axios';
 import { API_URL, authHeader } from './api.config';
 
@@ -35,13 +37,14 @@ export const updateOrder = async (id, orderData) => {
 
 // Updates just the order status
 export const updateOrderStatus = async (orderId, statusId) => {
+  // Uses the generic update endpoint
   const response = await axios.put(`${API_URL}/orders/${orderId}`, { order_status: statusId }, { headers: authHeader() });
   return response.data;
 };
 
 // Updates a single service item's completion
 export const updateOrderServiceStatus = async (orderServiceId, isCompleted) => {
-  // NOTE: Your backend does not show an endpoint for this.
+  // NOTE: Your backend code does not show an endpoint for this.
   // You must create: PUT /api/orders/service/:orderServiceId
   // This will fail until that endpoint exists.
   try {
@@ -52,3 +55,4 @@ export const updateOrderServiceStatus = async (orderServiceId, isCompleted) => {
      throw error;
   }
 };
+

@@ -1,10 +1,8 @@
+
 import React, { createContext, useState, useEffect, useContext } from 'react';
 import { jwtDecode } from 'jwt-decode';
-// Corrected service path
-import * as authService from '../services/auth.service';
-
+import * as authService from '../services/auth.service'; // Corrected path
 const AuthContext = createContext();
-
 export const AuthProvider = ({ children }) => {
   const [user, setUser] = useState(null);
   
@@ -17,6 +15,7 @@ export const AuthProvider = ({ children }) => {
         
         // Check if token is expired
         if (decoded.exp * 1000 > Date.now()) {
+          // Set user from decoded token
           setUser({ ...decoded, token: storedToken });
         } else {
           authService.logout(); // Token is expired
@@ -40,6 +39,8 @@ export const AuthProvider = ({ children }) => {
   const logout = () => {
     authService.logout();
     setUser(null);
+    // Redirect to home page after logout
+    window.location.href = '/';
   };
 
   // Memoize the context value
@@ -49,7 +50,6 @@ export const AuthProvider = ({ children }) => {
     const isAdmin = user?.company_role_id === 3; 
     // Role 2 (Manager) or 3 (Admin)
     const isManager = user?.company_role_id === 2 || user?.company_role_id === 3; 
-
     return {
       user,
       isLogged,
@@ -59,11 +59,10 @@ export const AuthProvider = ({ children }) => {
       logout,
     };
   }, [user]);
-
   return <AuthContext.Provider value={value}>{children}</AuthContext.Provider>;
 };
-
 // Custom hook to easily consume the context
 export const useAuth = () => {
   return useContext(AuthContext);
 };
+

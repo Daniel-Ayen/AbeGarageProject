@@ -260,3 +260,52 @@ input:disabled {
 .change-status {
   cursor: pointer;
 }
+
+/* src/assets/styles/custom.css */
+.admin-pages {
+  min-height: calc(100vh - 200px);
+  padding: 20px 0;
+}
+
+.admin-left-side {
+  background: #f8f9fa;
+  min-height: 100vh;
+  padding: 20px;
+  border-right: 1px solid #dee2e6;
+}
+
+.admin-right-side {
+  padding: 20px;
+}
+
+.admin-menu .list-group-item {
+  border: none;
+  border-radius: 0 !important;
+  padding: 12px 15px;
+}
+
+.admin-menu .list-group-item.active {
+  background-color: #007bff;
+  border-color: #007bff;
+}
+
+.admin-menu .list-group-item:hover:not(.active) {
+  background-color: #e9ecef;
+}
+
+/* Ensure proper spacing */
+.main-content {
+  min-height: calc(100vh - 150px);
+}
+
+/* Add this temporarily to your custom.css */
+.admin-pages {
+  background-color: yellow !important; /* Make it obvious */
+  padding: 20px !important;
+  border: 2px solid red !important;
+}
+
+.main-content {
+  background-color: #f0f0f0 !important;
+  min-height: 500px !important;
+}

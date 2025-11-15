@@ -1,11 +1,11 @@
-// src/services/api.config.js
-// 'axios' import removed, it's not used here
 
+
+//  src/utils/api.config.js
 // Ensure you set REACT_APP_API_URL in your .env file
 export const API_URL = process.env.REACT_APP_API_URL || 'http://localhost:8000/api';
 
 export const getAuthToken = () => {
-  return localStorage.getItem('userToken');
+  return localStorage.getItem('userToken'); // Use a consistent key
 };
 
 export const authHeader = () => {
@@ -17,3 +17,4 @@ export const authHeader = () => {
     return {};
   }
 };
+

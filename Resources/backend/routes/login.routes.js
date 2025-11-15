@@ -7,4 +7,4 @@ const loginControllers = require("../controllers/login.controller");
 // Create a route to handle the login request on post
 router.post("/login", loginControllers.logIn);
 // Export the router
-module.exports = router; 
+module.exports = router;  

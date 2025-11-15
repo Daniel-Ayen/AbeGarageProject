@@ -1,3 +1,79 @@
+
+// // src/services/employee.service.js
+// import axios from 'axios';
+// import { API_URL, authHeader, handleApiError } from './api.config';
+
+// export const getAllEmployees = async () => {
+//   try {
+//     const response = await axios.get(`${API_URL}/employees`, { 
+//       headers: authHeader() 
+//     });
+//     return response.data.data;
+//   } catch (error) {
+//     handleApiError(error);
+//   }
+// };
+
+// export const getEmployeeById = async (id) => {
+//   try {
+//     const response = await axios.get(`${API_URL}/employees/${id}`, { 
+//       headers: authHeader() 
+//     });
+//     return response.data.data;
+//   } catch (error) {
+//     handleApiError(error);
+//   }
+// };
+
+// export const createEmployee = async (employeeData) => {
+//   try {
+//     const response = await axios.post(`${API_URL}/employees`, employeeData, { 
+//       headers: authHeader() 
+//     });
+//     return response.data.data;
+//   } catch (error) {
+//     handleApiError(error);
+//   }
+// };
+
+// export const updateEmployee = async (id, employeeData) => {
+//   try {
+//     const response = await axios.put(`${API_URL}/employees/${id}`, employeeData, { 
+//       headers: authHeader() 
+//     });
+//     return response.data.data;
+//   } catch (error) {
+//     handleApiError(error);
+//   }
+// };
+
+// export const deleteEmployee = async (id) => {
+//   try {
+//     const response = await axios.delete(`${API_URL}/employees/${id}`, { 
+//       headers: authHeader() 
+//     });
+//     return response.data;
+//   } catch (error) {
+//     handleApiError(error);
+//   }
+// };
+
+// export const getAllRoles = async () => {
+//   try {
+//     const response = await axios.get(`${API_URL}/roles`, { 
+//       headers: authHeader() 
+//     });
+//     return response.data.data;
+//   } catch (error) {
+//     // Mock data if endpoint doesn't exist
+//     console.warn("Roles endpoint not available, using mock data");
+//     return [
+//       { company_role_id: 1, company_role_name: "Employee" },
+//       { company_role_id: 2, company_role_name: "Manager" },
+//       { company_role_id: 3, company_role_name: "Admin" },
+//     ];
+//   }
+// };
 import axios from 'axios';
 import { API_URL, authHeader } from './api.config';
 
@@ -27,14 +103,15 @@ export const updateEmployee = async (id, employeeData) => {
 
 // DELETE /api/employees/:id
 export const deleteEmployee = async (id) => {
+  // Note: Backend handles this as a soft delete
   const response = await axios.delete(`${API_URL}/employees/${id}`, { headers: authHeader() });
   return response.data;
 };
 
-// ROLES (Needed for Add/Edit Employee Forms)
+// ROLES
 export const getAllRoles = async () => {
   // NOTE: Your backend code does not show an endpoint for this.
-  // You must create a: GET /api/roles endpoint that returns all company_roles.
+  // You must create: GET /api/roles
   // For now, we will mock it if it fails.
   try {
     const response = await axios.get(`${API_URL}/roles`, { headers: authHeader() });
@@ -48,3 +125,4 @@ export const getAllRoles = async () => {
     ];
   }
 };
+

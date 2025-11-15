@@ -1,3 +1,4 @@
+
 import React from 'react';
 import { NavLink } from 'react-router-dom';
 import { useAuth } from '../../../../Contexts/AuthContext'; // Correct path
@@ -5,50 +6,52 @@ import { useAuth } from '../../../../Contexts/AuthContext'; // Correct path
 function AdminMenu() {
   const { isAdmin, isManager } = useAuth();
 
-  // This component matches the sidebar in all your admin screenshots
   return (
-    <div className="col-md-3">
-      <div className="admin-menu card p-3 shadow-sm" style={{backgroundColor: '#343a40', color: 'white'}}>
-        <h5 className="text-white mb-3" style={{borderBottom: '1px solid #666', paddingBottom: '10px'}}>ADMIN MENU</h5>
-        <ul className="list-group list-group-flush">
-          <li className="list-group-item" style={{background: 'none', border: 'none'}}>
-            <NavLink to="/admin/dashboard" className={({ isActive }) => isActive ? 'text-danger font-weight-bold' : 'text-white'}>Dashboard</NavLink>
-          </li>
-          
-          {(isManager || isAdmin) && (
-            <>
-              <li className="list-group-item" style={{background: 'none', border: 'none'}}>
-                <NavLink to="/admin/orders" className={({ isActive }) => isActive ? 'text-danger font-weight-bold' : 'text-white'}>Orders</NavLink>
-              </li>
-              <li className="list-group-item" style={{background: 'none', border: 'none'}}>
-                <NavLink to="/admin/new-order" className={({ isActive }) => isActive ? 'text-danger font-weight-bold' : 'text-white'}>New order</NavLink>
-              </li>
-              <li className="list-group-item" style={{background: 'none', border: 'none'}}>
-                <NavLink to="/admin/customers" className={({ isActive }) => isActive ? 'text-danger font-weight-bold' : 'text-white'}>Customers</NavLink>
-              </li>
-              <li className="list-group-item" style={{background: 'none', border: 'none'}}>
-                <NavLink to="/admin/add-customer" className={({ isActive }) => isActive ? 'text-danger font-weight-bold' : 'text-white'}>Add customer</NavLink>
-              </li>
-            </>
-          )}
+    <div className="admin-menu-container card p-3 shadow-sm" style={{minHeight: '80vh'}}>
+      <h5 className="widget_title" style={{color: '#1D3557', borderBottom: '2px solid #E63946', paddingBottom: '10px'}}>ADMIN MENU</h5>
+      <ul className="list-group list-group-flush">
+        
+        {/* All Roles */}
+        <li className="list-group-item">
+          <NavLink to="/admin/dashboard" className={({ isActive }) => isActive ? 'text-danger font-weight-bold' : ''}>Dashboard</NavLink>
+        </li>
+        <li className="list-group-item">
+          <NavLink to="/admin/orders" className={({ isActive }) => isActive ? 'text-danger font-weight-bold' : ''}>Orders</NavLink>
+        </li>
+        
+        {/* Manager & Admin Roles */}
+        {(isManager || isAdmin) && (
+          <>
+            <li className="list-group-item">
+              <NavLink to="/admin/new-order" className={({ isActive }) => isActive ? 'text-danger font-weight-bold' : ''}>New order</NavLink>
+            </li>
+            <li className="list-group-item">
+              <NavLink to="/admin/customers" className={({ isActive }) => isActive ? 'text-danger font-weight-bold' : ''}>Customers</NavLink>
+            </li>
+            <li className="list-group-item">
+              <NavLink to="/admin/add-customer" className={({ isActive }) => isActive ? 'text-danger font-weight-bold' : ''}>Add customer</NavLink>
+            </li>
+          </>
+        )}
 
-          {isAdmin && (
-            <>
-              <li className="list-group-item" style={{background: 'none', border: 'none'}}>
-                <NavLink to="/admin/employees" className={({ isActive }) => isActive ? 'text-danger font-weight-bold' : 'text-white'}>Employees</NavLink>
-              </li>
-              <li className="list-group-item" style={{background: 'none', border: 'none'}}>
-                <NavLink to="/admin/add-employee" className={({ isActive }) => isActive ? 'text-danger font-weight-bold' : 'text-white'}>Add employee</NavLink>
-              </li>
-              <li className="list-group-item" style={{background: 'none', border: 'none'}}>
-                <NavLink to="/admin/services" className={({ isActive }) => isActive ? 'text-danger font-weight-bold' : 'text-white'}>Manage Services</NavLink>
-              </li>
-            </>
-          )}
-        </ul>
-      </div>
+        {/* Admin-Only Roles */}
+        {isAdmin && (
+          <>
+            <li className="list-group-item">
+              <NavLink to="/admin/employees" className={({ isActive }) => isActive ? 'text-danger font-weight-bold' : ''}>Employees</NavLink>
+            </li>
+            <li className="list-group-item">
+              <NavLink to="/admin/add-employee" className={({ isActive }) => isActive ? 'text-danger font-weight-bold' : ''}>Add employee</NavLink>
+            </li>
+            <li className="list-group-item">
+              <NavLink to="/admin/services" className={({ isActive }) => isActive ? 'text-danger font-weight-bold' : ''}>Manage Services</NavLink>
+            </li>
+          </>
+        )}
+      </ul>
     </div>
   );
 }
 
 export default AdminMenu;
+

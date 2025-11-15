@@ -1,5 +1,5 @@
-const api_url = process.env.REACT_APP_API_URL;
-
+import { API_URL, authHeader, handleApiError } from './api.config';
+import axios from 'axios';
 // A function to send the login request to the server 
 const logIn = async (formData) => {
   const requestOptions = {
@@ -9,7 +9,7 @@ const logIn = async (formData) => {
   };
   
   try {
-    const response = await fetch(`${api_url}/api/employees/login`, requestOptions);
+    const response = await axios.post(`http://localhost:8000/api/employees/login`, requestOptions);
     
     // Check if response is JSON
     const contentType = response.headers.get('content-type');
@@ -17,7 +17,7 @@ const logIn = async (formData) => {
       const text = await response.text();
       throw new Error(`Server returned HTML instead of JSON. Response: ${text.substring(0, 100)}...`);
     }
-    
+    console.log(response)
     return response;
   } catch (error) {
     console.error('Login API error:', error);

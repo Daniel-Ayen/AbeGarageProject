@@ -1,44 +1,25 @@
-// Import React, the useState and useEffect hooks 
-import React, { useState, useEffect } from "react";
-// Import the Route and Navigate components  
-import { Navigate } from "react-router";
-// Import the Util function we created to handle the reading from the local storage 
-import getAuth from '../../../util/auth';
 
-const PrivateAuthRoute = ({ roles, children }) => {
-  const [isChecked, setIsChecked] = useState(false);
-  const [isLogged, setIsLogged] = useState(false);
-  const [isAuthorized, setIsAuthorized] = useState(false);
-
-  useEffect(() => {
-    // Retrieve the logged in user from local storage
-    const loggedInEmployee = getAuth();
-    // console.log(loggedInEmployee);
-    loggedInEmployee.then((response) => {
-      if (response.employee_token) {
-        // If in here, that means the user is logged in 
-        // console.log(response);
-        // console.log("Set logged in to true");
-        setIsLogged(true);
-        if (roles && roles.length > 0 && roles.includes(response.employee_role)) {
-          // If in here, that means the user is logged and has  authorization to access the route 
-          // console.log("Set authorized to true");
-          setIsAuthorized(true);
-        }
-      }
-      setIsChecked(true);
-    });
-  }, [roles]);
-  if (isChecked) {
-    if (!isLogged) {
-      return <Navigate to="/login" />;
-    }
-    if (!isAuthorized) {
-      return <Navigate to="/unauthorized" />;
-    }
+import React from 'react';
+import { useLocation, Navigate, Outlet } from 'react-router-dom';
+import { useAuth } from '../../../Contexts/AuthContext'; 
+function PrivateAuthRoute({ roles }) {
+  const { user, isLogged } = useAuth();
+  const location = useLocation();
+  
+  if (!isLogged) {
+    // Redirect unauthenticated users to the login page
+    return <Navigate to="/login" state={{ from: location }} replace />;
   }
 
-  return children;
-};
+  // Check if the user's role is in the allowed 'roles' array
+  const isAuthorized = roles.includes(user?.company_role_id);
 
+  if (!isAuthorized) {
+    // If logged in but not authorized, send to "Unauthorized" page
+    return <Navigate to="/unauthorized" replace />;
+  }
+  // If logged in and authorized, render the child route
+  return <Outlet />;
+}
 export default PrivateAuthRoute;
+

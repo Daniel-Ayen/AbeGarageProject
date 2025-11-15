@@ -1,3 +1,4 @@
+
 import axios from 'axios';
 import { API_URL, authHeader } from './api.config';
 
@@ -36,3 +37,4 @@ export const getVehiclesByCustomerId = async (customerId) => {
   const response = await axios.get(`${API_URL}/customers/${customerId}/vehicles`, { headers: authHeader() });
   return response.data.data;
 };
+

@@ -5,9 +5,10 @@ function Contact() {
   return (
     <div className="container content-inner">
       <h1>Contact Us</h1>
-      <p>Form and contact details based on the contact.jpg design goes here.</p>
+      <p>Schedule your appointment today. Form and contact details based on the contact.jpg design goes here.</p>
+      {/* ... Add contact form and map ... */}
     </div>
   );
 }
-
 export default Contact;
+

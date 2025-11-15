@@ -10,7 +10,7 @@ function Step3Services({ nextStep, prevStep, data }) {
   useEffect(() => {
     getAllServices()
       .then(data => { setAllServices(data); setLoading(false); })
-      .catch(err => { setError('Failed to load services.'); setLoading(false); });
+      // .catch(err => { setError('Failed to load services.'); setLoading(false); });
   }, []);
 
   const handleServiceToggle = (service) => {
