@@ -1,16 +1,4 @@
 
-
-
-// // src/markup/pages/Login.js
-// import React from 'react';
-// import LoginForm from '../components/LoginForm/LoginForm';
-
-// function Login() {
-//   return <LoginForm />;
-// }
-
-// export default Login;
-
 import React, { useState } from 'react';
 import { useNavigate, useLocation } from 'react-router-dom';
 import { useAuth } from '../../Contexts/AuthContext'; // Corrected path

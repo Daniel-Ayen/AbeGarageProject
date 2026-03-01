@@ -2,10 +2,10 @@
 import { Link } from 'react-router-dom';
 
 function Home() {
-  // Static content based on home.jpg
+  // Static content based on home.jpg ssets/images/banner/banner.jpg
   return (
     <>
-      <section className="hero-section" style={{backgroundImage: 'url(images/home.jpg)', minHeight: '500px', backgroundSize: 'cover', backgroundPosition: 'center', display: 'flex', alignItems: 'center'}}>
+      <section className="hero-section" style={{backgroundImage: 'url(../assets/images/banner/banner.jpg)', minHeight: '500px', backgroundSize: 'cover', backgroundPosition: 'center', display: 'flex', alignItems: 'center'}}>
         <div className="container">
           <div className="text-white bg-dark p-5" style={{maxWidth: '500px', opacity: '0.8', borderRadius: '8px'}}>
             <h1 style={{color: '#FFF'}}>Tuneup Your Car To Next Level</h1>
